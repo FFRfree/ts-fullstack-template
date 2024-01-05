@@ -2,11 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { TrpcModule } from '@server/trpc/trpc.module';
-import { MathModule } from './math/math.module';
+import { TrpcRouterModule } from './trpc-router/trpc-router.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), TrpcModule, MathModule],
+  imports: [ConfigModule.forRoot(), TrpcRouterModule],
   controllers: [AppController],
   providers: [AppService],
 })

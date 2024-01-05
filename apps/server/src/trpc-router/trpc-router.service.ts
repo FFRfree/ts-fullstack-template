@@ -1,14 +1,20 @@
-import { INestApplication, Injectable } from '@nestjs/common';
+import {
+  INestApplication,
+  Inject,
+  Injectable,
+  forwardRef,
+} from '@nestjs/common';
 import { TrpcService } from '@server/trpc/trpc.service';
 import { z } from 'zod';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { MathRouter } from './routes/math.router';
+import { MathTrpcRouter } from '../math/math.trpc-router';
 
 @Injectable()
-export class TrpcRouter {
+export class TrpcRouterService {
   constructor(
     private readonly trpc: TrpcService,
-    private readonly mathRouter: MathRouter,
+    @Inject(MathTrpcRouter)
+    private readonly mathRouter: MathTrpcRouter,
   ) {}
 
   appRouter = this.trpc.router({
@@ -28,4 +34,4 @@ export class TrpcRouter {
   }
 }
 
-export type AppRouter = TrpcRouter['appRouter'];
+export type AppRouter = TrpcRouterService['appRouter'];
