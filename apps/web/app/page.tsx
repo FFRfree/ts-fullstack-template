@@ -8,7 +8,7 @@ export default async function Home() {
     <div>
       <p>Server side - {response}</p>
       <Clientside />
-      <Button variant="outline">Button</Button>
+      <Button variant="destructive">Button</Button>
     </div>
   );
 }
