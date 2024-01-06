@@ -78,6 +78,7 @@ importers:
     specifiers:
       '@radix-ui/react-separator': ^1.0.3
       '@radix-ui/react-slot': ^1.0.2
+      '@radix-ui/react-switch': ^1.0.3
       '@radix-ui/react-toast': ^1.1.5
       '@radix-ui/react-tooltip': ^1.0.7
       '@trpc/client': ^10.33.0
@@ -92,6 +93,7 @@ importers:
       eslint-config-next: 13.4.7
       lucide-react: ^0.306.0
       next: '14'
+      next-themes: ^0.2.1
       postcss: 8.4.24
       react: 18.2.0
       react-dom: 18.2.0
@@ -105,6 +107,7 @@ importers:
     dependencies:
       '@radix-ui/react-separator': 1.0.3_hrrtw4it2dqo6rzcqzvl36ff7i
       '@radix-ui/react-slot': 1.0.2_i73ekzlbntu7jol6ph2fvy4mga
+      '@radix-ui/react-switch': 1.0.3_hrrtw4it2dqo6rzcqzvl36ff7i
       '@radix-ui/react-toast': 1.1.5_hrrtw4it2dqo6rzcqzvl36ff7i
       '@radix-ui/react-tooltip': 1.0.7_hrrtw4it2dqo6rzcqzvl36ff7i
       '@trpc/client': 10.33.0_@trpc+server@10.33.0
@@ -119,6 +122,7 @@ importers:
       eslint-config-next: 13.4.7_2jcgcerbs6bi4debdtwega5q6u
       lucide-react: 0.306.0_react@18.2.0
       next: 14.0.4_ob7c7ogpcitikph4afkm5ompve
+      next-themes: 0.2.1_hhw7wgihwfazgzbvi55hs2pcf4
       postcss: 8.4.24
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1626,6 +1630,33 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@radix-ui/react-switch/1.0.3_hrrtw4it2dqo6rzcqzvl36ff7i:
+    resolution: {integrity: sha512-mxm87F88HyHztsI7N+ZUmEoARGkC22YVW5CaC+Byc+HRpuvCrOBPTAnXgf+tZ/7i0Sg/eOePGdMhUKhPaQEqow==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.7
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1_i73ekzlbntu7jol6ph2fvy4mga
+      '@radix-ui/react-context': 1.0.1_i73ekzlbntu7jol6ph2fvy4mga
+      '@radix-ui/react-primitive': 1.0.3_hrrtw4it2dqo6rzcqzvl36ff7i
+      '@radix-ui/react-use-controllable-state': 1.0.1_i73ekzlbntu7jol6ph2fvy4mga
+      '@radix-ui/react-use-previous': 1.0.1_i73ekzlbntu7jol6ph2fvy4mga
+      '@radix-ui/react-use-size': 1.0.1_i73ekzlbntu7jol6ph2fvy4mga
+      '@types/react': 18.2.14
+      '@types/react-dom': 18.2.6
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /@radix-ui/react-toast/1.1.5_hrrtw4it2dqo6rzcqzvl36ff7i:
     resolution: {integrity: sha512-fRLn227WHIBRSzuRzGJ8W+5YALxofH23y0MlPLddaIpLpCDqdE0NZlS2NRQDRiptfxDeeCjgFIpexB1/zkxDlw==}
     peerDependencies:
@@ -1736,6 +1767,20 @@ packages:
 
   /@radix-ui/react-use-layout-effect/1.0.1_i73ekzlbntu7jol6ph2fvy4mga:
     resolution: {integrity: sha512-v/5RegiJWYdoCvMnITBkNNx6bCj20fiaJnWtRkU18yITptraXjffz5Qbn05uOiQnOvi+dbkznkoaMltz1GnszQ==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.7
+      '@types/react': 18.2.14
+      react: 18.2.0
+    dev: false
+
+  /@radix-ui/react-use-previous/1.0.1_i73ekzlbntu7jol6ph2fvy4mga:
+    resolution: {integrity: sha512-cV5La9DPwiQ7S0gf/0qiD6YgNqM5Fk97Kdrlc5yBcrF3jyEZQwm7vYFqMo4IfeHgJXsRaMvLABFtd0OVEmZhDw==}
     peerDependencies:
       '@types/react': '*'
       react: ^16.8 || ^17.0 || ^18.0
@@ -5378,6 +5423,18 @@ packages:
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
+
+  /next-themes/0.2.1_hhw7wgihwfazgzbvi55hs2pcf4:
+    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 14.0.4_ob7c7ogpcitikph4afkm5ompve
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /next/14.0.4_ob7c7ogpcitikph4afkm5ompve:
     resolution: {integrity: sha512-qbwypnM7327SadwFtxXnQdGiKpkuhaRLE2uq62/nRul9cj9KhQ5LhHmlziTNqUidZotw/Q1I9OjirBROdUJNgA==}

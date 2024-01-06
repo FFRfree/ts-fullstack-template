@@ -1,7 +1,9 @@
 "use client";
 import { SideMenu } from "@web/components/SideMenu";
 import { sidebarItems } from "./sidebar-config";
-import { TopMenu } from "@web/components/TopMenu";
+import { TopMenu } from "@web/app/admin/top-menu";
+import { ThemeSwitcher } from "./theme-switcher";
+import { Separator } from "@web/components/ui/separator";
 
 // export const metadata = {
 //   title: "后台管理",
@@ -21,7 +23,7 @@ export default function AdminLayout({
           items={sidebarItems}
         >
           <TopMenu />
-          <div className="admin-main-area">{children}</div>
+          <div className="admin-main-area h-full">{children}</div>
         </SideMenu>
       </div>
     </div>

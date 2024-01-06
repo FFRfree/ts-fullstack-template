@@ -2,13 +2,15 @@
 
 import { Button } from "@web/components/ui/button";
 import { useToast } from "@web/components/ui/use-toast";
+import { useTheme } from "next-themes";
+import { ThemeSwitcher } from "../theme-switcher";
 
 export default function Page1() {
   const { toast, toasts } = useToast();
-  console.log(toasts);
+  const { setTheme } = useTheme();
 
   return (
-    <>
+    <div className=" h-full flex  flex-col justify-center items-center">
       <h1>Page1</h1>
       {JSON.stringify(toasts)}
       <p className="mb-4">
@@ -34,8 +36,11 @@ export default function Page1() {
         </Button>
       </p>
       <p className="mb-4">
-        <Button variant={"outline"}>toast</Button>
+        <Button variant={"outline"} onClick={() => setTheme("dark")}>
+          toast
+        </Button>
       </p>
-    </>
+      <ThemeSwitcher />
+    </div>
   );
 }

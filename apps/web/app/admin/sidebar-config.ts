@@ -11,21 +11,18 @@ export const sidebarItems: NavProps["links"] = [
   {
     key: "Admin main page",
     title: "Admin main page",
-    label: "972",
     icon: Users2,
     href: "/admin",
   },
   {
-    key: "Updates",
-    title: "Updates",
-    label: "342",
+    key: "Page1",
+    title: "Page1",
     icon: AlertCircle,
     href: "/admin/page1",
   },
   {
     key: "Forums",
     title: "Forums",
-    label: "128",
     icon: MessagesSquare,
   },
 ];
