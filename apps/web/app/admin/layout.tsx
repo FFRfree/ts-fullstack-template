@@ -21,7 +21,7 @@ export default function AdminLayout({
           items={sidebarItems}
         >
           <TopMenu />
-          {children}
+          <div className="admin-main-area">{children}</div>
         </SideMenu>
       </div>
     </div>

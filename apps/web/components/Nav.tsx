@@ -33,7 +33,6 @@ export function Nav({ links, isCollapsed }: NavProps) {
       <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
         {links.map((link) => {
           const selected = pathname === link.href;
-          console.log(selected);
 
           return isCollapsed ? (
             <Tooltip key={link.key} delayDuration={0}>

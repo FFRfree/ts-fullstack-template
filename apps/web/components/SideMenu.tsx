@@ -31,7 +31,6 @@ export function SideMenu({
   topSlot,
 }: SideMenuProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-
   return (
     <TooltipProvider delayDuration={0}>
       <ResizablePanelGroup
