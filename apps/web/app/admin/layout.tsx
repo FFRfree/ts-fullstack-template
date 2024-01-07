@@ -1,4 +1,3 @@
-"use client";
 import { SideMenu } from "@web/components/side-menu";
 import { sidebarItems } from "./sidebar-config";
 import { TopMenu } from "@web/app/admin/top-menu";
@@ -12,14 +11,13 @@ import { Gauge, LayoutGrid } from "lucide-react";
 //   title: "后台管理",
 // };
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <>
-      <ClickToComponent />
       <div className=" h-screen p-2">
         <div className=" h-full rounded-lg border-2 border-primary">
           <SideMenu

@@ -1,5 +1,7 @@
+"use server";
+
 import Clientside from "./Clientside";
-import { trpc } from "./trpc";
+import { trpc } from "../lib/trpc";
 import { Button } from "@web/components/ui/button";
 
 export default async function Home() {

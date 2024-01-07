@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { trpc } from "./trpc";
+import { trpc } from "../lib/trpc";
 
 export default function Clientside() {
   const [greeting, setGreeting] = useState("");

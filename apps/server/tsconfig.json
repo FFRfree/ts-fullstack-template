@@ -13,7 +13,6 @@
       "@web/*": ["apps/web/*"],
       "@domains/*": ["packages/domains/src/*"],
       "@/*": ["apps/server/src/*"],
-
     }
   }
 }

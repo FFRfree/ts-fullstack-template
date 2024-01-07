@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useTheme } from "next-themes";
 import { ThemeSwitcher } from "../theme-switcher";
-import { trpc } from "@/app/trpc";
+import { trpc } from "@web/lib/trpc";
+import { api } from "@web/lib/api";
 
 export default function Page1() {
   const { toast, toasts } = useToast();
@@ -44,12 +45,15 @@ export default function Page1() {
           create user mutation
         </Button>
       </p>
-      <ThemeSwitcher />
+      <p className="mb-4">
+        <DatabaseTable />
+      </p>
     </div>
   );
 }
 
 const DatabaseTable = () => {
   // trpc.resources.user.findAll
-  return <div>{JSON.stringify()}</div>;
+  const { data, isLoading } = api.resources.user.findAll.useQuery();
+  return <div>{isLoading ? "loading" : JSON.stringify(data)}</div>;
 };

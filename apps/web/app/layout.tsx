@@ -1,7 +1,7 @@
 import { Toaster } from "@web/components/ui/toaster";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@web/components/theme-provider";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
         <>
           <Toaster />
         </>

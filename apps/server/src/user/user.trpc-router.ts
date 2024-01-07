@@ -1,8 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { TrpcService } from '@server/trpc/trpc.service';
 import { UserService } from './user.service';
-import { createUserDto } from './user.dto';
-import { z } from 'zod';
+import { createUserDto } from '@domains/dto/user';
 
 @Injectable()
 export class UserTrpcRouter {
