@@ -8,6 +8,7 @@ import { TrpcService } from '@server/trpc/trpc.service';
 import { z } from 'zod';
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { MathTrpcRouter } from '../math/math.trpc-router';
+import { UserTrpcRouter } from '@server/user/user.trpc-router';
 
 @Injectable()
 export class TrpcRouterService {
@@ -15,6 +16,8 @@ export class TrpcRouterService {
     private readonly trpc: TrpcService,
     @Inject(MathTrpcRouter)
     private readonly mathRouter: MathTrpcRouter,
+    @Inject(UserTrpcRouter)
+    private readonly userTrpcRouter: UserTrpcRouter,
   ) {}
 
   appRouter = this.trpc.router({
@@ -24,6 +27,9 @@ export class TrpcRouterService {
         return `Hello ${input.name ? input.name : `Bilbo`}`;
       }),
     math: this.mathRouter.routes,
+    resources: this.trpc.router({
+      user: this.userTrpcRouter.routes,
+    }),
   });
 
   async applyMiddleware(app: INestApplication) {

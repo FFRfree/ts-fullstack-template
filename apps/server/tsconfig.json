@@ -7,6 +7,13 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@server/*": ["apps/server/src/*"],
+      "@web/*": ["apps/web/*"],
+      "@domains/*": ["packages/domains/src/*"],
+      "@/*": ["apps/server/src/*"],
+
+    }
   }
 }

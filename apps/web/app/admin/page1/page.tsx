@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "@web/components/ui/button";
-import { useToast } from "@web/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import { useTheme } from "next-themes";
 import { ThemeSwitcher } from "../theme-switcher";
+import { trpc } from "@/app/trpc";
 
 export default function Page1() {
   const { toast, toasts } = useToast();
@@ -38,6 +39,9 @@ export default function Page1() {
       <p className="mb-4">
         <Button variant={"outline"} onClick={() => setTheme("dark")}>
           toast
+        </Button>
+        <Button onClick={() => trpc.resources.user.create.mutate({})}>
+          create user mutation
         </Button>
       </p>
       <ThemeSwitcher />
