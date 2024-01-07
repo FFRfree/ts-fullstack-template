@@ -1,3 +1,5 @@
-export default async function Home() {
-  return <div>admin</div>;
+"use client";
+export default function Home() {
+  // useState();
+  return <div>admin333</div>;
 }

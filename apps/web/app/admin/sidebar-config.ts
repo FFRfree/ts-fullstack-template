@@ -1,4 +1,4 @@
-import { NavProps } from "@web/components/Nav";
+import { NavProps } from "@web/components/nav";
 import {
   Users2,
   AlertCircle,

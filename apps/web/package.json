@@ -17,6 +17,8 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@trpc/client": "^10.33.0",
+    "@trpc/next": "^10.45.0",
+    "@trpc/react-query": "^10.45.0",
     "@trpc/server": "^10.33.0",
     "@types/node": "18.11.18",
     "@types/react": "18.2.14",

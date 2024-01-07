@@ -48,3 +48,8 @@ export default function Page1() {
     </div>
   );
 }
+
+const DatabaseTable = () => {
+  // trpc.resources.user.findAll
+  return <div>{JSON.stringify()}</div>;
+};
