@@ -94,6 +94,7 @@ importers:
       '@types/react-dom': 18.2.6
       autoprefixer: 10.4.14
       class-variance-authority: ^0.7.0
+      click-to-react-component: ^1.1.0
       clsx: ^2.1.0
       eslint: ^8.0.1
       eslint-config-next: 13.4.7
@@ -123,6 +124,7 @@ importers:
       '@types/react-dom': 18.2.6
       autoprefixer: 10.4.14_postcss@8.4.24
       class-variance-authority: 0.7.0
+      click-to-react-component: 1.1.0_qzycrpzqvmvb7wd2jdibmpq2cy
       clsx: 2.1.0
       eslint: 8.43.0
       eslint-config-next: 13.4.7_2jcgcerbs6bi4debdtwega5q6u
@@ -771,10 +773,20 @@ packages:
     resolution: {integrity: sha512-s2UHCoiXfxMvmfzqoN+vrQ84ahUSYde9qNO1MdxmoEhyHWsfmwOpFlwYV+ePJEVc7gFnATGUi376WowX1N7tFg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
+  /@floating-ui/core/0.6.2:
+    resolution: {integrity: sha512-jktYRmZwmau63adUG3GKOAVCofBXkk55S/zQ94XOorAHhwqFIOFAy1rSp2N0Wp6/tGbe9V3u/ExlGZypyY17rg==}
+    dev: false
+
   /@floating-ui/core/1.5.2:
     resolution: {integrity: sha512-Ii3MrfY/GAIN3OhXNzpCKaLxHQfJF9qvwq/kEJYdqDxeIHa01K8sldugal6TmeeXl+WMvhv9cnVzUTaFFJF09A==}
     dependencies:
       '@floating-ui/utils': 0.1.6
+    dev: false
+
+  /@floating-ui/dom/0.4.5:
+    resolution: {integrity: sha512-b+prvQgJt8pieaKYMSJBXHxX/DYwdLsAWxKYqnO5dO2V4oo/TYBZJAUQCVNjTWWsrs6o4VDrNcP9+E70HAhJdw==}
+    dependencies:
+      '@floating-ui/core': 0.6.2
     dev: false
 
   /@floating-ui/dom/1.5.3:
@@ -782,6 +794,34 @@ packages:
     dependencies:
       '@floating-ui/core': 1.5.2
       '@floating-ui/utils': 0.1.6
+    dev: false
+
+  /@floating-ui/react-dom-interactions/0.3.1_qzycrpzqvmvb7wd2jdibmpq2cy:
+    resolution: {integrity: sha512-tP2KEh7EHJr5hokSBHcPGojb+AorDNUf0NYfZGg/M+FsMvCOOsSEeEF0O1NDfETIzDnpbHnCs0DuvCFhSMSStg==}
+    deprecated: Package renamed to @floating-ui/react
+    dependencies:
+      '@floating-ui/react-dom': 0.6.3_qzycrpzqvmvb7wd2jdibmpq2cy
+      aria-hidden: 1.2.3
+      point-in-polygon: r2.cnpmjs.org/point-in-polygon/1.1.0
+      use-isomorphic-layout-effect: 1.1.2_i73ekzlbntu7jol6ph2fvy4mga
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+      - react-dom
+    dev: false
+
+  /@floating-ui/react-dom/0.6.3_qzycrpzqvmvb7wd2jdibmpq2cy:
+    resolution: {integrity: sha512-hC+pS5D6AgS2wWjbmSQ6UR6Kpy+drvWGJIri6e1EDGADTPsCaa4KzCgmCczHrQeInx9tqs81EyDmbKJYY2swKg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/dom': 0.4.5
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      use-isomorphic-layout-effect: 1.1.2_i73ekzlbntu7jol6ph2fvy4mga
+    transitivePeerDependencies:
+      - '@types/react'
     dev: false
 
   /@floating-ui/react-dom/2.0.4_biqbaboplfbrettd7655fr4n2y:
@@ -2578,6 +2618,13 @@ packages:
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
+  /aria-hidden/1.2.3:
+    resolution: {integrity: sha512-xcLxITLe2HYa1cnYnwCjkOO1PqUHQpozB8x9AR0OgWN2woOBi5kSDVxKfd0b7sb1hw5qFeJhXm9H1nu3xSfLeQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      tslib: 2.6.0
+    dev: false
+
   /aria-query/5.3.0:
     resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
     dependencies:
@@ -3031,6 +3078,20 @@ packages:
     resolution: {integrity: sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==}
     engines: {node: '>= 10'}
     dev: true
+
+  /click-to-react-component/1.1.0_qzycrpzqvmvb7wd2jdibmpq2cy:
+    resolution: {integrity: sha512-/DjZemufS1BkxyRgZL3r7HXVVOFRWVQi5Xd4EBnjxZMwrHEh0OlUVA2N9CjXkZ0x8zMf8dL1cKnnx+xUWUg4VA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@floating-ui/react-dom-interactions': 0.3.1_qzycrpzqvmvb7wd2jdibmpq2cy
+      htm: 3.1.1
+      react: 18.2.0
+      react-merge-refs: r2.cnpmjs.org/react-merge-refs/1.1.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-dom
+    dev: false
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
@@ -4353,6 +4414,10 @@ packages:
     resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
     engines: {node: '>=8'}
     dev: true
+
+  /htm/3.1.1:
+    resolution: {integrity: sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==}
+    dev: false
 
   /html-escaper/2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
@@ -7017,6 +7082,19 @@ packages:
     dependencies:
       punycode: 2.3.0
 
+  /use-isomorphic-layout-effect/1.1.2_i73ekzlbntu7jol6ph2fvy4mga:
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.2.14
+      react: 18.2.0
+    dev: false
+
   /use-sync-external-store/1.2.0_react@18.2.0:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
     peerDependencies:
@@ -7732,6 +7810,12 @@ packages:
     version: 1.0.0
     dev: false
 
+  r2.cnpmjs.org/point-in-polygon/1.1.0:
+    resolution: {integrity: sha512-3ojrFwjnnw8Q9242TzgXuTD+eKiutbzyslcq1ydfu82Db2y+Ogbmyrkpv0Hgj31qwT3lbS9+QAAO/pIQM35XRw==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/point-in-polygon/-/point-in-polygon-1.1.0.tgz}
+    name: point-in-polygon
+    version: 1.1.0
+    dev: false
+
   r2.cnpmjs.org/process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz}
     name: process-nextick-args
@@ -7746,6 +7830,12 @@ packages:
       kleur: r2.cnpmjs.org/kleur/3.0.3
       sisteransi: r2.cnpmjs.org/sisteransi/1.0.5
     dev: true
+
+  r2.cnpmjs.org/react-merge-refs/1.1.0:
+    resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/react-merge-refs/-/react-merge-refs-1.1.0.tgz}
+    name: react-merge-refs
+    version: 1.1.0
+    dev: false
 
   r2.cnpmjs.org/resolve-from/4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==, registry: http://r.cnpmjs.org/, tarball: https://r2.cnpmjs.org/resolve-from/-/resolve-from-4.0.0.tgz}
