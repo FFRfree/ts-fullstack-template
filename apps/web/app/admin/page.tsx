@@ -1,5 +1,9 @@
-"use client";
-export default function Home() {
+"use server";
+
+import { trpc } from "@/lib/trpc";
+
+export default async function Home() {
   // useState();
-  return <div>admin333</div>;
+  const hell = await trpc.hello.query({});
+  return <div>admin333: {hell}</div>;
 }

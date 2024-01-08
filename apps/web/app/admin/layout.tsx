@@ -1,17 +1,14 @@
-import { SideMenu } from "@web/components/side-menu";
+"use client";
+import { SideMenu } from "@/components/side-menu";
 import { sidebarItems } from "./sidebar-config";
-import { TopMenu } from "@web/app/admin/top-menu";
-import { ThemeSwitcher } from "./theme-switcher";
-import { Separator } from "@web/components/ui/separator";
-import { ClickToComponent } from "click-to-react-component";
-import NoSSR from "@/components/no-ssr";
-import { Gauge, LayoutGrid } from "lucide-react";
+import { TopMenu } from "@/app/admin/top-menu";
+import { Gauge } from "lucide-react";
 
 // export const metadata = {
 //   title: "后台管理",
 // };
 
-export default async function AdminLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;

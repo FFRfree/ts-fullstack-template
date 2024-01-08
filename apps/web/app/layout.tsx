@@ -1,4 +1,4 @@
-import { Toaster } from "@web/components/ui/toaster";
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Providers from "./providers";
@@ -10,7 +10,7 @@ export const metadata = {
   description: "using stack including trpc, react, nestjs, shadcn/ui",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/** @ts-expect-error idk why type went wrong after wrapping with api.withTRPC */}
         <Providers>{children}</Providers>
         <>
           <Toaster />

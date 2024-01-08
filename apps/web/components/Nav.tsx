@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { LucideIcon } from "lucide-react";
 
-import { cn } from "@web/lib/utils";
-import { buttonVariants } from "@web/components/ui/button";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@web/components/ui/tooltip";
+} from "@/components/ui/tooltip";
 import { usePathname, useRouter } from "next/navigation";
 
 export interface NavProps {

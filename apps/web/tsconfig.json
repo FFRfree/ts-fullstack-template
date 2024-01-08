@@ -19,9 +19,8 @@
     ],
     "paths": {
       "@server/*": ["apps/server/src/*"],
-      "@web/*": ["apps/web/*"],
-      "@domains/*": ["packages/domains/src/*"],
       "@/*": ["apps/web/*"],
+      "@domains/*": ["packages/domains/src/*"],
 
     }
   },

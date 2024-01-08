@@ -1,6 +1,7 @@
+"use client";
 import * as React from "react";
-import { Separator } from "../../components/ui/separator";
-import { ThemeSwitcher } from "./theme-switcher";
+import { Separator } from "@/components/ui/separator";
+import { ThemeSwitcher } from "@/components/next/theme-switcher";
 
 export interface ITopMenuProps {}
 

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
-import { TrpcModule } from '@server/trpc/trpc.module';
-import { PrismaModule } from '@server/prisma/prisma.module';
+import { TrpcModule } from '@/trpc/trpc.module';
+import { PrismaModule } from '@/prisma/prisma.module';
 import { UserTrpcRouter } from './user.trpc-router';
 
 @Module({

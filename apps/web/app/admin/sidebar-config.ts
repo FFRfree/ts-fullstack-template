@@ -1,4 +1,4 @@
-import { NavProps } from "@web/components/nav";
+import { NavProps } from "@/components/nav";
 import {
   Users2,
   AlertCircle,
@@ -21,8 +21,9 @@ export const sidebarItems: NavProps["links"] = [
     href: "/admin/page1",
   },
   {
-    key: "Forums",
-    title: "Forums",
+    key: "Page2",
+    title: "Page2",
     icon: MessagesSquare,
+    href: "/admin/page2",
   },
 ];

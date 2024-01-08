@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { TrpcService } from '@server/trpc/trpc.service';
+import { TrpcService } from '@/trpc/trpc.service';
 import { UserService } from './user.service';
 import { createUserDto } from '@domains/dto/user';
 

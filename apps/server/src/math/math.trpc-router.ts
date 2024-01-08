@@ -1,7 +1,7 @@
 import { Inject, Injectable, forwardRef } from '@nestjs/common';
-import { TrpcService } from '@server/trpc/trpc.service';
+import { TrpcService } from '@/trpc/trpc.service';
 import { z } from 'zod';
-import { MathService } from '@server/math/math.service';
+import { MathService } from '@/math/math.service';
 
 @Injectable()
 export class MathTrpcRouter {

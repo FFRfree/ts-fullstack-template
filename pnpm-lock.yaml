@@ -147,7 +147,7 @@ importers:
     devDependencies:
       shadcn-ui: 0.6.0_typescript@4.9.5
 
-  packages/shared:
+  packages/domains:
     specifiers:
       zod: ^3.21.4
     dependencies:

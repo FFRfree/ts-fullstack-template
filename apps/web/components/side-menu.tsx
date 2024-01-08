@@ -3,15 +3,15 @@
 import * as React from "react";
 import { Archive, ArchiveX, File, Inbox, Send, Trash2 } from "lucide-react";
 
-import { Nav, NavProps } from "@web/components/nav";
-import { cn } from "@web/lib/utils";
-import { Separator } from "@web/components/ui/separator";
-import { TooltipProvider } from "@web/components/ui/tooltip";
+import { Nav, NavProps } from "@/components/nav";
+import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@web/components/ui/resizable";
+} from "@/components/ui/resizable";
 import NoSsr from "./no-ssr";
 
 interface SideMenuProps {
