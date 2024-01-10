@@ -42,11 +42,11 @@ export default function Page1() {
         toast
       </Button>
       <Button
-        onClick={() =>
-          trpc.resources.user.create
-            .mutate({})
-            .then(() => utils.resources.user.findAll.invalidate())
-        }
+      // onClick={() =>
+      // trpc.resources.user.create
+      //   .mutate({})
+      //   .then(() => utils.resources.user.findAll.invalidate())
+      // }
       >
         create user mutation
       </Button>
