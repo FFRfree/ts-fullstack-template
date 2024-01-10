@@ -18,10 +18,11 @@
       }
     ],
     "paths": {
-      "@server/*": ["apps/server/src/*"],
       "@/*": ["apps/web/*"],
-      "@domains/*": ["packages/domains/src/*"],
-
+      "@web/*": ["apps/web/*"],
+      /** 这个只能用来导入AppRouter的类型 */
+      "@server/*": ["./apps/server/src/*"],
+      "@shared/*": ["./packages/shared"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

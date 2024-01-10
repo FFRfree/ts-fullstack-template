@@ -1,12 +1,12 @@
 "use client";
 import { useEffect } from "react";
 import ErrorComp from "../error";
-import Loading from "../loading";
+import { add, getSecret } from "@shared/math";
 
 export default function Page2() {
   return (
     <>
-      <Loading />
+      {add(1, 2)} {getSecret()}
     </>
   );
 }

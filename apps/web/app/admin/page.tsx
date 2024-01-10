@@ -4,6 +4,6 @@ import { trpc } from "@/lib/trpc";
 
 export default async function Home() {
   // useState();
-  const hell = await trpc.hello.query({});
-  return <div>admin333: {hell}</div>;
+  const resp = await trpc.hello.query({ name: "ffr" });
+  return <div>admin333: {resp}</div>;
 }

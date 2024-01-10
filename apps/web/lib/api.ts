@@ -9,7 +9,7 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 
-import { AppRouter } from "@server/trpc-router/trpc-router.service";
+import type { AppRouter } from "@server/apis/trpc/trpc.service";
 import { createTRPCReact } from "@trpc/react-query";
 
 /** A set of type-safe react-query hooks for your tRPC API. */
