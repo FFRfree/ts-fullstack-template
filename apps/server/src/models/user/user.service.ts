@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@/prisma/prisma.service';
-import { CreateUserDto } from '@domains/dto/user';
+import { PrismaService } from '@server/database/prisma/prisma.service';
+import { CreateUserDto } from '@shared/validation';
 
 @Injectable()
 export class UserService {
@@ -24,5 +24,13 @@ export class UserService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  findByName(name: string) {
+    return this.prisma.user.findUnique({
+      where: {
+        name,
+      },
+    });
   }
 }

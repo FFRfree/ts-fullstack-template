@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MathService } from './math.service';
-import { TrpcModule } from '@/trpc/trpc.module';
+import { TrpcModule } from '@server/apis/trpc/trpc.module';
 import { MathTrpcRouter } from './math.trpc-router';
 
 @Module({

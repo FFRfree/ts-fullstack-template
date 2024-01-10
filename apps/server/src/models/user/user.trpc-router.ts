@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { TrpcService } from '@/trpc/trpc.service';
+import { TrpcService } from '@server/apis/trpc/trpc.service';
 import { UserService } from './user.service';
-import { createUserDto } from '@domains/dto/user';
+import { createUserSchema } from '@shared/validation';
 
 @Injectable()
 export class UserTrpcRouter {
@@ -11,9 +11,11 @@ export class UserTrpcRouter {
   ) {}
 
   routes = this.trpcService.router({
-    create: this.trpcService.procedure.input(createUserDto).mutation((opts) => {
-      return this.userService.create(opts.input);
-    }),
+    create: this.trpcService.procedure
+      .input(createUserSchema)
+      .mutation((opts) => {
+        return this.userService.create(opts.input);
+      }),
     findAll: this.trpcService.procedure.query((opts) => {
       return this.userService.findAll();
     }),

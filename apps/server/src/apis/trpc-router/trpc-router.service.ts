@@ -4,11 +4,11 @@ import {
   Injectable,
   forwardRef,
 } from '@nestjs/common';
-import { TrpcService } from '@/trpc/trpc.service';
+import { TrpcService } from '@server/apis/trpc/trpc.service';
 import { z } from 'zod';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { MathTrpcRouter } from '../math/math.trpc-router';
-import { UserTrpcRouter } from '@/user/user.trpc-router';
+import { MathTrpcRouter } from '../../features/math/math.trpc-router';
+import { UserTrpcRouter } from '@server/models/user/user.trpc-router';
 
 @Injectable()
 export class TrpcRouterService {
