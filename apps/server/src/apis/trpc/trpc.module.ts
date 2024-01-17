@@ -1,4 +1,5 @@
 import { Global, Module } from '@nestjs/common';
+import { DiscoveryModule } from '@nestjs/core';
 import { TrpcService } from '@server/apis/trpc/trpc.service';
 
 /**
@@ -8,5 +9,6 @@ import { TrpcService } from '@server/apis/trpc/trpc.service';
 @Module({
   providers: [TrpcService],
   exports: [TrpcService],
+  imports: [DiscoveryModule],
 })
 export class TrpcModule {}

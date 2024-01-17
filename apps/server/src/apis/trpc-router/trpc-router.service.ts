@@ -32,6 +32,11 @@ export class TrpcRouterService {
     }),
   });
 
+  appRouter2 = this.trpc.mergeRouters(
+    this.mathRouter.routes,
+    this.userTrpcRouter.routes,
+  );
+
   async applyMiddleware(app: INestApplication) {
     app.use(
       `/trpc`,
