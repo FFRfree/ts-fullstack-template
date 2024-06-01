@@ -1,0 +1,22 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./webpack.config.js",
+    "build-antd-less": "lessc --js --modify-var='ant-prefix=mike' node_modules/antd/dist/antd.less dist/antd.mine.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "antd": "4",
+    "css-loader": "^6.10.0",
+    "less-loader": "^12.2.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

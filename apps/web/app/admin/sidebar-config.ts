@@ -26,4 +26,10 @@ export const sidebarItems: NavProps["links"] = [
     icon: MessagesSquare,
     href: "/admin/page2",
   },
+  {
+    key: "Page3",
+    title: "antd",
+    icon: MessagesSquare,
+    href: "/admin/page3",
+  },
 ];

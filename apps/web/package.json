@@ -23,16 +23,21 @@
     "@types/node": "18.11.18",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "ahooks": "^3.7.10",
+    "antd": "4",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.7.0",
     "click-to-react-component": "^1.1.0",
     "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
     "eslint": "^8.0.1",
     "eslint-config-next": "13.4.7",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.306.0",
     "next": "14",
     "next-themes": "^0.2.1",
     "postcss": "8.4.24",
+    "rc-picker": "^4.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-resizable-panels": "1.0.0",
@@ -43,6 +48,13 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.3",
+    "@types/lodash": "^4.14.202",
+    "clone-deep": "^4.0.1",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "next-compose-plugins": "^2.2.1",
+    "next-with-less": "^3.0.1",
     "shadcn-ui": "^0.6.0"
   }
 }

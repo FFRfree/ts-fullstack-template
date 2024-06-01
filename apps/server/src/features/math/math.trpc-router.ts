@@ -11,5 +11,8 @@ export class MathTrpcRouter {
     add: procedure.input(z.array(z.number())).query(({ input }) => {
       return this.mathService.add(input);
     }),
+    test: procedure.query(() => {
+      return this.mathService.test();
+    }),
   });
 }

@@ -3,6 +3,10 @@ import { SideMenu } from "@/components/side-menu";
 import { sidebarItems } from "./sidebar-config";
 import { TopMenu } from "@/app/admin/top-menu";
 import { Gauge } from "lucide-react";
+import {
+  useSelectedLayoutSegments,
+  useSelectedLayoutSegment,
+} from "next/navigation";
 
 // export const metadata = {
 //   title: "后台管理",
@@ -24,7 +28,9 @@ export default function AdminLayout({
             topSlot={<Gauge />}
           >
             <TopMenu />
-            <div className="admin-main-area h-full">{children}</div>
+            <div className="admin-main-area h-full overflow-auto">
+              {children}
+            </div>
           </SideMenu>
         </div>
       </div>

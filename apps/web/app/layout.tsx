@@ -1,5 +1,9 @@
 import { Toaster } from "@/components/ui/toaster";
+// import "../antd.mine.css";
+import "./antd.css";
 import "./globals.css";
+import "rc-picker/assets/index.css";
+
 import { Inter } from "next/font/google";
 import Providers from "./providers";
 

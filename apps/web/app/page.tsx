@@ -1,6 +1,6 @@
 "use server";
 
-import Clientside from "./Clientside";
+import Clientside from "./client-side";
 import { trpc } from "../lib/trpc";
 import { Button } from "@/components/ui/button";
 

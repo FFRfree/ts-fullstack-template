@@ -63,6 +63,8 @@ export default function Page1() {
   );
 }
 
+// export const openPage1 = 1;
+
 const DatabaseTable = () => {
   // trpc.resources.user.findAll
   const { data, isLoading } = api.resources.user.findAll.useQuery();
