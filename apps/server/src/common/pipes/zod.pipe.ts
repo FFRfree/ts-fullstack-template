@@ -1,5 +1,5 @@
 import { Injectable, PipeTransform, ArgumentMetadata } from '@nestjs/common';
-import { Schema } from 'zod';
+import { Schema } from '@shared/zod';
 @Injectable()
 export class ZodPipe implements PipeTransform {
   constructor(private schema: Schema) {}

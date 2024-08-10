@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { UserModule } from '@server/models/user/user.module';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constant';
+import { AuthTrpcRouter } from './auth.trpc-router';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { jwtConstants } from './constant';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, AuthTrpcRouter],
+  exports: [AuthTrpcRouter],
 })
 export class AuthModule {}

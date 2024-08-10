@@ -1,8 +1,8 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../../models/user/user.service';
 import { JwtService } from '@nestjs/jwt';
-import { signInSchema } from '@shared/validation';
-import { z } from 'zod';
+import { createUserSchema, signInSchema } from '@shared/validation';
+import { z } from '@shared/zod';
 
 @Injectable()
 export class AuthService {
@@ -27,5 +27,17 @@ export class AuthService {
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
+  }
+
+  async register(params: z.infer<typeof createUserSchema>) {
+    const user = await this.userService.findByName(params.name);
+
+    if (user) {
+      throw new Error('user already exist');
+    }
+
+    const result = await this.userService.create(params);
+
+    return result;
   }
 }

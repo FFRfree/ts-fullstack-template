@@ -4,10 +4,9 @@ import {
   Injectable,
   forwardRef,
 } from '@nestjs/common';
-import { z } from 'zod';
+import { z } from '@shared/zod';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { MathTrpcRouter } from '../../features/math/math.trpc-router';
-import { UserTrpcRouter } from '@server/models/user/user.trpc-router';
+import { AuthTrpcRouter, MathTrpcRouter, UserTrpcRouter } from './routers';
 import { procedure, router } from './trpc.instance';
 
 @Injectable()
@@ -17,6 +16,8 @@ export class TrpcRouterService {
     private readonly mathRouter: MathTrpcRouter,
     @Inject(UserTrpcRouter)
     private readonly userTrpcRouter: UserTrpcRouter,
+    @Inject(AuthTrpcRouter)
+    private readonly authTrpcRouter: AuthTrpcRouter,
   ) {}
 
   appRouter = router({
@@ -29,6 +30,7 @@ export class TrpcRouterService {
     resources: router({
       user: this.userTrpcRouter.routes,
     }),
+    auth: this.authTrpcRouter.routes,
   });
 
   async applyMiddleware(app: INestApplication) {

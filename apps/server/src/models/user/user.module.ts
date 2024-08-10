@@ -4,7 +4,7 @@ import { PrismaModule } from '@server/database/prisma/prisma.module';
 import { UserTrpcRouter } from './user.trpc-router';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule],
   providers: [UserService, UserTrpcRouter],
   exports: [UserTrpcRouter, UserService],
 })

@@ -1,6 +1,6 @@
 "use client";
 
-import { trpc } from "@/lib/trpc";
+import { api } from "@/lib/trpc";
 import { Button } from "antd";
 import {
   useSelectedLayoutSegment,
@@ -23,7 +23,7 @@ export default async function Home() {
       <div>
         <Button
           onClick={async () => {
-            const res = await trpc.math.test.query();
+            const res = await api.math.test.query();
             console.log({ res });
           }}
         >

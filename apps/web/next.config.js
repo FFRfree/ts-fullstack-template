@@ -25,7 +25,15 @@ const nextConfig = {
     })
 
     return config;
-  }
+  },
+  // rewrites: async () => {
+  //   return [
+  //     {
+  //       source: '/trpc/:path*',
+  //       destination: 'http://localhost:4000/trpc/:path*' // Proxy to Backend
+  //     }
+  //   ]
+  // }
 }
 
 

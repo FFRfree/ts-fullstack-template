@@ -9,11 +9,11 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCNext } from "@trpc/next";
 import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 
-import type { AppRouter } from "@server/apis/trpc/trpc.service";
-import { createTRPCReact } from "@trpc/react-query";
+import type { AppRouter } from "@shared/app-router";
+import { toast } from "@/components/ui/use-toast";
 
 /** A set of type-safe react-query hooks for your tRPC API. */
-export const api = createTRPCNext<AppRouter>({
+export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
       /**
@@ -45,12 +45,22 @@ export const api = createTRPCNext<AppRouter>({
             networkMode: "always",
           },
           mutations: {
+            onError(error, variables, context) {
+              if (error?.shape?.message) {
+                toast({
+                  variant: "destructive",
+                  description: error?.shape?.message,
+                });
+              }
+              console.log({ error, variables, context });
+            },
             networkMode: "always",
           },
         },
       },
     };
   },
+
   /**
    * Whether tRPC should await queries when server rendering pages.
    *
@@ -58,8 +68,6 @@ export const api = createTRPCNext<AppRouter>({
    */
   ssr: true,
 });
-
-export const api2 = createTRPCReact<AppRouter>({});
 
 /**
  * Inference helper for inputs.

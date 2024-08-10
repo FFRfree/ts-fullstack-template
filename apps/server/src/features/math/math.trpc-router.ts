@@ -1,5 +1,5 @@
 import { Inject, Injectable, forwardRef } from '@nestjs/common';
-import { z } from 'zod';
+import { z } from '@shared/zod';
 import { MathService } from '@server/features/math/math.service';
 import { procedure, router } from '@server/apis/trpc/trpc.instance';
 

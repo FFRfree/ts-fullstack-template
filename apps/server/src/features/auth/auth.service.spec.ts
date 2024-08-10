@@ -18,4 +18,9 @@ describe('AuthService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('', async () => {
+    const resp = await service.signIn({ username: 'ffr', password: 'nihao' });
+    console.log(resp);
+  });
 });

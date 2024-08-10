@@ -17,13 +17,10 @@
         "name": "next"
       }
     ],
-    "paths": {
-      "@/*": ["apps/web/*"],
-      "@web/*": ["apps/web/*"],
-      /** 这个只能用来导入AppRouter的类型 */
-      "@server/*": ["./apps/server/src/*"],
-      "@shared/*": ["./packages/shared"]
-    }
+    // "paths": {
+    //   "@/*": ["apps/web/*"],
+    //   "@shared/*": ["packages/shared/lib/*","packages/shared/src/*"]
+    // }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

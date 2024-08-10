@@ -19,10 +19,10 @@ export default function AdminLayout({
 }) {
   return (
     <>
-      <div className=" h-screen p-2">
+      <div className=" h-screen p-2 min-h-[500px]">
         <div className=" h-full rounded-lg border-2 border-primary">
           <SideMenu
-            defaultLayout={[265, 440, 655]}
+            defaultLayout={[10, 90]}
             navCollapsedSize={2}
             items={sidebarItems}
             topSlot={<Gauge />}

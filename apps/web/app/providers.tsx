@@ -1,11 +1,11 @@
 "use client";
 
-import { api } from "@/lib/api";
+import { trpc } from "@/lib/api";
 import { ClickToComponent } from "click-to-react-component";
 import { ThemeProvider } from "next-themes";
 import * as React from "react";
 
-const P = api.withTRPC(function Providers({ children }: { children?: any }) {
+export const Providers = function Providers({ children }: { children?: any }) {
   return (
     <>
       <ClickToComponent />
@@ -15,10 +15,10 @@ const P = api.withTRPC(function Providers({ children }: { children?: any }) {
         enableSystem
         disableTransitionOnChange
       >
-        {children}
+        <TrpcProvider>{children}</TrpcProvider>
       </ThemeProvider>
     </>
   );
-});
+};
 
-export default P;
+const TrpcProvider = trpc.withTRPC((props) => props.children) as any;

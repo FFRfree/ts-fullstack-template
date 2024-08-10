@@ -24,7 +24,7 @@ interface SideMenuProps {
 }
 
 export function SideMenu({
-  defaultLayout = [265, 440, 655],
+  defaultLayout = [10, 90],
   defaultCollapsed = false,
   navCollapsedSize,
   items,

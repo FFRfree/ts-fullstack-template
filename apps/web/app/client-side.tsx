@@ -1,17 +1,19 @@
 "use client";
 
+import { api, trpc } from "@/lib/api";
 import { useEffect, useState } from "react";
-import { trpc } from "../lib/trpc";
 
 export default function Clientside() {
   const [greeting, setGreeting] = useState("");
   const [result, setResult] = useState(0);
+  const {} = trpc.hello.useQuery({});
+  console.log("hehe");
 
   useEffect(() => {
-    trpc.hello.query({}).then((response) => {
+    api.hello.query({}).then((response) => {
       setGreeting(response);
     });
-    trpc.math.add.query([1, 2, 3, 4]).then((result) => {
+    api.math.add.query([1, 2, 3, 4]).then((result) => {
       setResult(result);
     });
   });

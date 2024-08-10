@@ -1,72 +1,80 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
-import { useTheme } from "next-themes";
-import { ThemeSwitcher } from "../../../components/next/theme-switcher";
-import { trpc } from "@/lib/trpc";
-import { api } from "@/lib/api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-export default function Page1() {
-  const { toast, toasts } = useToast();
-  const { setTheme } = useTheme();
-  const utils = api.useUtils();
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { CreateUserDto, createUserSchema } from "@shared/validation";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { api } from "@/lib/api/api";
+import { toast } from "@/components/ui/use-toast";
+import { useCounter } from "react-use";
+
+export default function InputForm() {
+  const [num, { inc }] = useCounter();
+  const { mutateAsync, isLoading } = api.resources.user.create.useMutation();
+
+  const form = useForm<CreateUserDto>({
+    resolver: zodResolver(createUserSchema),
+    defaultValues: {},
+  });
+
+  const { isSubmitting } = form.formState;
+
+  async function onSubmit(data: CreateUserDto) {
+    try {
+      const resp = await mutateAsync(data);
+
+      toast({
+        title: "create user success",
+      });
+
+      form.reset();
+    } catch (error) {}
+  }
 
   return (
-    <div className=" h-full flex  flex-col justify-center items-center space-y-1">
-      <h1>Page1</h1>
-      {JSON.stringify(toasts)}
-
-      <Button
-        variant={"outline"}
-        onClick={() => {
-          const { id, update } = toast({
-            variant: "destructive",
-            title: "Scheduled: Catch up",
-            description: "Friday, February 10, 2023 at 5:57 PM",
-          });
-          setTimeout(() => {
-            update({
-              title: "ddd",
-              variant: "default",
-              description: "heihie",
-              id: id,
-            });
-          }, 1000);
-        }}
-      >
-        toast
-      </Button>
-
-      <Button variant={"outline"} onClick={() => setTheme("dark")}>
-        toast
-      </Button>
-      <Button
-      // onClick={() =>
-      // trpc.resources.user.create
-      //   .mutate({})
-      //   .then(() => utils.resources.user.findAll.invalidate())
-      // }
-      >
-        create user mutation
-      </Button>
-
-      <DatabaseTable />
-      <Button
-        onClick={() => {
-          throw new Error("manually triggered error");
-        }}
-      >
-        throw error
-      </Button>
-    </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+        {Object.keys(createUserSchema.shape).map((key) => {
+          return (
+            <FormField
+              control={form.control}
+              name={key as any}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{key}</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder={`enter your ${key}`}
+                      {...field}
+                      value={field.value || ""}
+                    />
+                  </FormControl>
+                  {/* <FormDescription>
+                    This is your public display name.
+                  </FormDescription> */}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          );
+        })}
+        <Button disabled={isSubmitting} type="submit">
+          create
+        </Button>
+        {isSubmitting && <LoadingSpinner />}
+      </form>
+      <Button onClick={() => inc()}>inc({num})</Button>
+    </Form>
   );
 }
-
-// export const openPage1 = 1;
-
-const DatabaseTable = () => {
-  // trpc.resources.user.findAll
-  const { data, isLoading } = api.resources.user.findAll.useQuery();
-  return <div>{isLoading ? "loading" : JSON.stringify(data)}</div>;
-};
