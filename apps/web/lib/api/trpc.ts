@@ -45,7 +45,7 @@ export const trpc = createTRPCNext<AppRouter>({
             networkMode: "always",
           },
           mutations: {
-            onError(error, variables, context) {
+            onError(error: any, variables, context) {
               if (error?.shape?.message) {
                 toast({
                   variant: "destructive",

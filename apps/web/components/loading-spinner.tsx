@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/style-utils";
 import * as React from "react";
 
 export const LoadingSpinner = ({ className }: { className?: string }) => {

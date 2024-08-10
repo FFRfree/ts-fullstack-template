@@ -6,6 +6,12 @@ import { trpc } from "@/lib/api";
 import { api } from "@/lib/api/api";
 import { MutateDialog } from "./mutate-dialog";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
+import { catchApiError } from "@/lib/api/catch-error";
+import { ReactNode } from "react";
+import { z } from "@shared/zod";
+import { Field } from "./const";
+import { omit } from "lodash";
 
 export const UserTable = ({ initialData }: { initialData?: any }) => {
   const { data, refetch, isFetching } = trpc.resources.user.findAll.useQuery(
@@ -16,58 +22,108 @@ export const UserTable = ({ initialData }: { initialData?: any }) => {
     }
   );
 
-  console.log("data:", data);
-  // const keys = Object.keys(data?[0].)
-  // const [num, { inc }] = useCounter();
-
   return (
     <div>
-      {/* {isFetching && <LoadingSpinner />} */}
-      <DataSource data={data} rowKey="id" />
-      <Button onClick={() => refetch()}>refresh</Button>
+      <DataSource
+        data={data}
+        rowKey="id"
+        operations={[
+          {
+            title: "operations",
+            render(record) {
+              return (
+                <>
+                  <Button
+                    onClick={() => {
+                      catchApiError(async () => {
+                        await api.resources.user.deleteOne.mutate(record.id);
+                        refetch();
+                      });
+                    }}
+                    variant="destructive"
+                  >
+                    delete
+                  </Button>
+                  <MutateDialog
+                    schema={z
+                      .object({ id: z.string().describe(Field.id) })
+                      .merge(createUserSchema)}
+                    defaultValues={record as any}
+                    onSubmit={(data) =>
+                      catchApiError(
+                        () =>
+                          api.resources.user.update.mutate({
+                            id: data.id,
+                            data: omit(data, "id"),
+                          }),
+                        {
+                          onSuccess: () => refetch(),
+                        }
+                      )
+                    }
+                    trigger={<Button>edit</Button>}
+                  />
+                </>
+              );
+            },
+          },
+        ]}
+      />
+      <Button
+        variant="secondary"
+        onClick={() => refetch()}
+        loading={isFetching}
+      >
+        refresh
+      </Button>
       <MutateDialog
         schema={createUserSchema}
         onSubmit={(data) =>
-          api.resources.user.create
-            .mutate(data)
-            .then(() => {
-              refetch();
-              return true;
-            })
-            .catch((reason) => false)
+          catchApiError(() => api.resources.user.create.mutate(data))
         }
       />
     </div>
   );
 };
 
-export const DataSource = ({
+type OperationColumn<T> = {
+  title: ReactNode;
+  render: (record: T) => ReactNode;
+};
+
+export const DataSource = <Data extends Record<string, any>>({
   data,
   rowKey,
+  operations,
 }: {
-  data?: any[];
-  rowKey?: string;
+  data?: Data[];
+  rowKey?: keyof Data;
+  operations?: Array<OperationColumn<Data>>;
 }) => {
   if (!data?.length) return;
   const keys = Object.keys(data?.[0]);
 
   return (
-    <table>
+    <table className="table-auto">
       <thead>
         <tr>
           {keys.map((key) => (
             <td>{key}</td>
           ))}
+          {operations?.map((col) => (
+            <td>{col.title}</td>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {data?.map((user) => (
-          <tr key={rowKey ? user[rowKey] : undefined}>
-            {Object.keys(user).map((k) => (
-              <td>{user[k]}</td>
+        {data?.map((record) => (
+          <tr key={rowKey ? record[rowKey] : undefined}>
+            {Object.keys(record).map((k) => (
+              <td>{record[k]}</td>
             ))}
-            <td>{user.id}</td>
-            <td>{user.email}</td>
+            {operations?.map((col) => (
+              <td>{col.render(record)}</td>
+            ))}
           </tr>
         ))}
       </tbody>

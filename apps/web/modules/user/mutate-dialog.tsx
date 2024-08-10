@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Form, FormField } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { DefaultValues, useForm, UseFormReturn } from "react-hook-form";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { ReactElement, useState } from "react";
 import {
@@ -34,21 +34,24 @@ import {
   ZodString,
   ZodType,
 } from "@shared/zod";
+import { Field } from "./const";
 
 export const MutateDialog = <Schema extends ZodObject<any>>({
   schema,
+  defaultValues,
   onSubmit,
-  trigger = <Button variant="outline">create a record</Button>,
+  trigger = <Button variant="default">create a record</Button>,
 }: {
   schema: Schema;
+  defaultValues?: DefaultValues<z.infer<Schema>>;
   onSubmit?: (data: z.infer<Schema>) => Promise<boolean>;
   trigger?: ReactElement;
 }) => {
   const [open, setOpen] = useState(false);
-
+  console.log({ defaultValues });
   const form = useForm<z.infer<Schema>>({
     resolver: zodResolver(schema),
-    defaultValues: {} as any,
+    defaultValues: defaultValues,
   });
 
   const { isSubmitting } = form.formState;
@@ -68,9 +71,9 @@ export const MutateDialog = <Schema extends ZodObject<any>>({
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
+          <DialogTitle>Mutation Dialog</DialogTitle>
           <DialogDescription>
-            Anyone who has this link will be able to view this.
+            Fields are generate base on zod schema
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -78,17 +81,13 @@ export const MutateDialog = <Schema extends ZodObject<any>>({
             onSubmit={form.handleSubmit(handleSubmit)}
             className="w-2/3 space-y-6"
           >
-            {Object.entries(schema.shape).map(([key, value]) => {
-              return (
-                <FormField
-                  control={form.control}
-                  name={key as any}
-                  render={getFieldEntryRender(key, value as any)}
-                />
-              );
-            })}
+            {renderFormSchema(schema, form)}
             <DialogFooter className="sm:justify-start">
-              <Button disabled={isSubmitting} type="submit">
+              <Button
+                disabled={isSubmitting}
+                type="submit"
+                loading={isSubmitting}
+              >
                 create
               </Button>
               <DialogClose asChild>
@@ -96,23 +95,27 @@ export const MutateDialog = <Schema extends ZodObject<any>>({
                   Close
                 </Button>
               </DialogClose>
-              <Button
-                type="button"
-                onClick={() => {
-                  form.reset();
-                  setOpen(false);
-                }}
-              >
-                close 2
-              </Button>
             </DialogFooter>
-
-            {isSubmitting && <LoadingSpinner />}
           </form>
         </Form>
       </DialogContent>
     </Dialog>
   );
+};
+
+const renderFormSchema = <Schema extends ZodObject<any, any, any>>(
+  schema: Schema,
+  form: UseFormReturn<z.TypeOf<Schema>, any, undefined>
+) => {
+  return Object.entries(schema.shape).map(([key, value]) => {
+    return (
+      <FormField
+        control={form.control}
+        name={key as any}
+        render={getFieldEntryRender(key, value as any)}
+      />
+    );
+  });
 };
 
 // render field basedon zod type
@@ -124,6 +127,7 @@ const getFieldEntryRender = (
   if (fieldType instanceof ZodOptional || fieldType instanceof ZodNullable) {
     return getFieldEntryRender(fieldKey, fieldType.unwrap());
   }
+
   if (fieldType instanceof ZodString || fieldType instanceof ZodNumber) {
     return ({ field }) => (
       <FormItem>
@@ -134,6 +138,7 @@ const getFieldEntryRender = (
             type={fieldType instanceof ZodNumber ? "number" : undefined}
             {...field}
             value={field.value || ""}
+            disabled={fieldType.description === Field.id}
           />
         </FormControl>
         {/* <FormDescription>

@@ -4,7 +4,7 @@ import * as React from "react";
 import { Archive, ArchiveX, File, Inbox, Send, Trash2 } from "lucide-react";
 
 import { Nav, NavProps } from "@/components/nav";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/style-utils";
 import { Separator } from "@/components/ui/separator";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import {
