@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { createUserSchema, signInSchema } from '@shared/validation';
+import { createUserSchema, signInSchema } from '@shared/dtos';
 import { procedure, router } from '@server/apis/trpc/trpc.instance';
 import { AuthService } from './auth.service';
 

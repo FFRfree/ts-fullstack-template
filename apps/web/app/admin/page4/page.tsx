@@ -9,8 +9,7 @@ export default async function Page() {
   // const data = await trpc.resources.user.findAll.query();
   return (
     <div>
-      {/* <UserTable /> */}
-      <Button></Button>
+      <UserTable />
     </div>
   );
 }

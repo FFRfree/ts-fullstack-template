@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { SignInDto, signInSchema } from '@shared/validation';
+import { SignInDto, signInSchema } from '@shared/dtos';
 import { AuthService } from './auth.service';
 import { ZodPipe } from '@server/common/pipes/zod.pipe';
 @Controller('auth')

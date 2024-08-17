@@ -1,6 +1,6 @@
 "use client";
 
-import { api } from "@/lib/trpc";
+import { api } from "@/lib/api";
 import { Button } from "antd";
 import {
   useSelectedLayoutSegment,

@@ -48,7 +48,6 @@ export const MutateDialog = <Schema extends ZodObject<any>>({
   trigger?: ReactElement;
 }) => {
   const [open, setOpen] = useState(false);
-  console.log({ defaultValues });
   const form = useForm<z.infer<Schema>>({
     resolver: zodResolver(schema),
     defaultValues: defaultValues,

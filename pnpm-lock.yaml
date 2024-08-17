@@ -321,6 +321,9 @@ importers:
 
   packages/shared:
     dependencies:
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
       zod:
         specifier: ^3.21.4
         version: 3.21.4

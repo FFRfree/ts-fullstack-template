@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CreateUserDto, createUserSchema } from "@shared/validation";
+import { CreateUserDto, createUserSchema } from "@shared/dtos";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { api } from "@/lib/api/api";
 import { toast } from "@/components/ui/use-toast";

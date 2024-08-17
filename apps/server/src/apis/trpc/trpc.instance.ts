@@ -1,6 +1,6 @@
-import { initTRPC } from '@trpc/server';
+import { initTRPC, TRPCError } from '@trpc/server';
 
-export const trpc = initTRPC.create();
+export const trpc = initTRPC.create({});
 
 export const procedure = trpc.procedure;
 

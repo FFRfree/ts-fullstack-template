@@ -1,6 +1,10 @@
 "use client";
 
-import { createUserSchema } from "@shared/validation";
+import {
+  createUserSchema,
+  SearchUserDto,
+  searchUserSchema,
+} from "@shared/dtos";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { trpc } from "@/lib/api";
 import { api } from "@/lib/api/api";
@@ -8,22 +12,37 @@ import { MutateDialog } from "./mutate-dialog";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { catchApiError } from "@/lib/api/catch-error";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { z } from "@shared/zod";
 import { Field } from "./const";
 import { omit } from "lodash";
+import { SearchForm } from "./search-form";
 
 export const UserTable = ({ initialData }: { initialData?: any }) => {
+  const [input, setInput] = useState<SearchUserDto>({});
+
   const { data, refetch, isFetching } = trpc.resources.user.findAll.useQuery(
-    undefined,
+    input,
     {
-      staleTime: 1000 * 60 * 5,
+      refetchOnMount: false,
+      // queryKey: [input]
+      // staleTime: 1,
       initialData: initialData,
     }
   );
 
   return (
     <div>
+      <SearchForm
+        schema={searchUserSchema}
+        onSubmit={(data) => {
+          console.log({ data });
+          setInput(data);
+          // refetch();
+        }}
+        onReset={() => setInput({})}
+      />
+      <div className="py-2"></div>
       <DataSource
         data={data}
         rowKey="id"
@@ -50,16 +69,13 @@ export const UserTable = ({ initialData }: { initialData?: any }) => {
                       .merge(createUserSchema)}
                     defaultValues={record as any}
                     onSubmit={(data) =>
-                      catchApiError(
-                        () =>
-                          api.resources.user.update.mutate({
-                            id: data.id,
-                            data: omit(data, "id"),
-                          }),
-                        {
-                          onSuccess: () => refetch(),
-                        }
-                      )
+                      catchApiError(async () => {
+                        await api.resources.user.update.mutate({
+                          id: data.id,
+                          data: omit(data, "id"),
+                        });
+                        refetch();
+                      })
                     }
                     trigger={<Button>edit</Button>}
                   />
@@ -107,6 +123,7 @@ export const DataSource = <Data extends Record<string, any>>({
     <table className="table-auto">
       <thead>
         <tr>
+          <td>Index</td>
           {keys.map((key) => (
             <td>{key}</td>
           ))}
@@ -116,8 +133,9 @@ export const DataSource = <Data extends Record<string, any>>({
         </tr>
       </thead>
       <tbody>
-        {data?.map((record) => (
+        {data?.map((record, index) => (
           <tr key={rowKey ? record[rowKey] : undefined}>
+            <td>{index}</td>
             {Object.keys(record).map((k) => (
               <td>{record[k]}</td>
             ))}

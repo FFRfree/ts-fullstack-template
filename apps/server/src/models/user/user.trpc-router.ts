@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { UserService } from './user.service';
-import { createUserSchema } from '@shared/validation';
+import { createUserSchema, searchUserSchema } from '@shared/dtos';
 import { procedure, router } from '@server/apis/trpc/trpc.instance';
 import { z } from '@shared/zod';
 import { sleep } from '@shared';
@@ -18,8 +18,8 @@ export class UserTrpcRouter {
       .mutation((opts) => {
         return this.userService.update(opts.input.id, opts.input.data);
       }),
-    findAll: procedure.query(async (opts) => {
-      return this.userService.findAll();
+    findAll: procedure.input(searchUserSchema).query(async (opts) => {
+      return this.userService.findAll(opts.input);
     }),
     deleteOne: procedure.input(z.string()).mutation((opts) => {
       return this.userService.deleteOne(opts.input);
